@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гоночная игра</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="preloader">
+        <h2>Загрузка...</h2>
+    </div>
+
+    <div class="screen" id="start-screen">
+        <div class="content">
+            <h1>Гоночная Игра</h1>
+            <div id="instructions">
+                <p>Избегайте выбоин на дороге!</p>
+                <p>Собирайте инструменты для ремонта.</p>
+                <p>Управление: A/D или кнопки внизу.</p>
+            </div>
+            <button class="btn" id="next-btn">Начать игру</button>
+        </div>
+    </div>
+
+    <div class="screen" id="name-screen" style="display: none;">
+        <div class="content">
+            <h2>Введите ваше имя</h2>
+            <input type="text" id="username" placeholder="Ваше имя" maxlength="20">
+            <button class="btn" id="start-game-btn">Играть</button>
+        </div>
+    </div>
+
+    <div class="screen" id="game-screen" style="display: none;">
+        <div id="road">
+            <div id="car"></div>
+        </div>
+        <div id="ui">
+            <div id="timer">00:20</div>
+            <div id="score">Выбоин: 0</div>
+            <div id="tools">Инструменты: 0</div>
+            <div id="health"></div>
+        </div>
+        <div id="superpower-btn">S</div>
+    </div>
+
+    <div class="screen" id="result-screen" style="display: none;">
+        <div class="content">
+            <h2>Игра окончена!</h2>
+            <h3 id="result-username"></h3>
+            <p>Отремонтировано выбоин: <span id="result-score"></span></p>
+            <p>Собрано инструментов: <span id="result-tools"></span></p>
+            
+            <h3>Таблица лидеров</h3>
+            <table id="leaderboard">
+                <thead>
+                    <tr>
+                        <th>Место</th>
+                        <th>Имя</th>
+                        <th>Выбоин</th>
+                        <th>Инструменты</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body"></tbody>
+            </table>
+            
+            <button class="btn" id="restart-btn">Играть снова</button>
+        </div>
+    </div>
+
+    <div class="mobile-controls">
+        <div class="mobile-btn" id="left-btn">←</div>
+        <div class="mobile-btn" id="right-btn">→</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

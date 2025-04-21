@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background: url('media/background.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a2e;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.5s;
+}
+
+.content {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid #4cc9f0;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #4cc9f0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4cc9f0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #4cc9f0;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #3a56d4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input {
+    padding: 10px;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    width: 300px;
+    max-width: 80%;
+    border: 2px solid #4cc9f0;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#game-screen {
+    display: none;
+    opacity: 0;
+    background-color: #1a1a2e;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-size: cover;
+}
+
+#road {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    background: url('media/road.png') repeat-y;
+    background-size: 300px auto;
+    left: calc(50% - 150px);
+    overflow: hidden;
+    border-left: 5px solid #4cc9f0;
+    border-right: 5px solid #4cc9f0;
+    animation: roadMove 1s linear infinite;
+}
+
+@keyframes roadMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+#car {
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    bottom: 50px;
+    left: 125px;
+    background: url('media/car.png') no-repeat center center;
+    background-size: contain;
+    z-index: 10;
+    transition: left 0.2s;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+.pothole {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    background: url('media/barrel.png') no-repeat center center;
+    background-size: contain;
+    z-index: 5;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.tool {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: url('media/toolkit.png') no-repeat center center;
+    background-size: contain;
+    z-index: 5;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.health {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: url('media/health.png') no-repeat center center;
+    background-size: contain;
+    z-index: 5;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+#ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 1.2rem;
+    z-index: 20;
+    background-color: rgba(26, 26, 46, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    border: 1px solid #4cc9f0;
+}
+
+#health {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.health-icon {
+    width: 20px;
+    height: 20px;
+    background: url('media/health.png') no-repeat center center;
+    background-size: contain;
+}
+
+#superpower-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #4361ee;
+    border-radius: 50%;
+    z-index: 20;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    transition: all 0.3s;
+}
+
+#superpower-btn:hover {
+    background-color: #3a56d4;
+    transform: scale(1.1);
+}
+
+#leaderboard {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+#leaderboard th, #leaderboard td {
+    padding: 10px;
+    border: 1px solid #4cc9f0;
+    text-align: center;
+}
+
+#leaderboard th {
+    background-color: #4361ee;
+    color: white;
+}
+
+#leaderboard tr:nth-child(even) {
+    background-color: rgba(38, 38, 64, 0.7);
+}
+
+#leaderboard tr.highlight {
+    background-color: rgba(67, 97, 238, 0.3);
+    font-weight: bold;
+}
+
+.explosion {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(circle, rgba(0, 150, 255, 0.8) 0%, rgba(0, 50, 150, 0) 70%);
+    border-radius: 50%;
+    z-index: 15;
+    animation: explode 0.5s forwards;
+}
+
+@keyframes explode {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+/* Анимация инструкции */
+#instructions p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Мобильные элементы управления */
+.mobile-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    gap: 20px;
+    z-index: 30;
+}
+
+.mobile-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(67, 97, 238, 0.7);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    user-select: none;
+    color: white;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    #road {
+        width: 250px;
+        left: calc(50% - 125px);
+    }
+    
+    #car {
+        width: 40px;
+        height: 64px;
+    }
+    
+    .mobile-controls {
+        display: flex;
+    }
+    
+    #ui {
+        font-size: 1rem;
+        padding: 8px;
+    }
+    
+    #superpower-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
